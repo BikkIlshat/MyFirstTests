@@ -5,4 +5,11 @@
     <string name="email_hint">Enter your Email</string>
     <string name="invalid_email">Invalid email</string>
     <string name="valid_email">OK</string>
+    <string name="enter_pass">Enter your password</string>
+    <string name="confirm_pass">Confirm your password</string>
+    <string name="check">Check</string>
+    <string name="passwords_match">That\'s okey, passwords match!</string>
+    <string name="passwords_mismatch">Passwords mismatch!</string>
+
+
 </resources>
