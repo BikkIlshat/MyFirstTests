@@ -20,7 +20,7 @@ class DetailsPresenterTests {
 
   @Before
   fun setUp() {
-    MockitoAnnotations.initMocks(this)
+    MockitoAnnotations.openMocks(this)
     presenter = DetailsPresenter(viewContract)
     viewDetailsContract  = viewContract
       .javaClass
