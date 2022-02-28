@@ -2,37 +2,36 @@ package com.geekbrains.myfirsttests.repository
 
 
 import com.geekbrains.myfirsttests.model.SearchResponse
+import com.geekbrains.myfirsttests.presenter.RepositoryContract
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-internal class GitHubRepository(private val gitHubApi: GitHubApi) {
+internal class GitHubRepository(private val gitHubApi: GitHubApi) :
+  RepositoryContract {
 
-  fun searchGithub(
+  override fun searchGithub(
     query: String,
-    callback: GitHubRepositoryCallback
+    callback: RepositoryCallback,
   ) {
     val call = gitHubApi.searchGithub(query)
     call?.enqueue(object : Callback<SearchResponse?> {
 
       override fun onResponse(
         call: Call<SearchResponse?>,
-        response: Response<SearchResponse?>
+        response: Response<SearchResponse?>,
       ) {
         callback.handleGitHubResponse(response)
       }
 
       override fun onFailure(
         call: Call<SearchResponse?>,
-        t: Throwable
+        t: Throwable,
       ) {
         callback.handleGitHubError()
       }
     })
   }
 
-  interface GitHubRepositoryCallback {
-    fun handleGitHubResponse(response: Response<SearchResponse?>?)
-    fun handleGitHubError()
-  }
+
 }

@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirstTests">
-        <activity android:name="com.geekbrains.myfirsttests.view.search.MainActivity"
+        <activity
+            android:name=".FakeMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.search.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,4 +25,5 @@
         </activity>
         <activity android:name=".view.details.DetailsActivity" />
     </application>
+
 </manifest>

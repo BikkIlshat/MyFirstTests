@@ -3,6 +3,8 @@ package com.geekbrains.myfirsttests.presenter.search
 import com.geekbrains.myfirsttests.repository.GitHubRepository
 import com.geekbrains.myfirsttests.view.search.ViewSearchContract
 import com.geekbrains.myfirsttests.model.SearchResponse
+import com.geekbrains.myfirsttests.presenter.RepositoryContract
+import com.geekbrains.myfirsttests.repository.RepositoryCallback
 import com.geekbrains.myfirsttests.view.ViewContract
 import retrofit2.Response
 
@@ -16,8 +18,8 @@ import retrofit2.Response
 
 internal class SearchPresenter internal constructor(
   private val viewContract: ViewSearchContract,
-  private val repository: GitHubRepository,
-) : PresenterSearchContract, GitHubRepository.GitHubRepositoryCallback {
+  private val repository: RepositoryContract
+) : PresenterSearchContract, RepositoryCallback {
 
   private var view: ViewContract? = null
 
