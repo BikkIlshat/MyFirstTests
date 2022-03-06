@@ -45,6 +45,12 @@ class FakeMainActivity : AppCompatActivity(), ViewSearchContract {
   }
 
   private fun setQueryListener() {
+    searchButton.setOnClickListener {
+      val query = searchEditText.text.toString()
+      if (query.isNotBlank()) {
+        presenter.searchGitHub(query)
+      }
+    }
     searchEditText.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
       if (actionId == EditorInfo.IME_ACTION_SEARCH) {
         val query = searchEditText.text.toString()
