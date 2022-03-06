@@ -22,19 +22,17 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class MainActivityEspressoTest {
   private lateinit var scenario: ActivityScenario<MainActivity>
-
   @Before
   fun setup() {
     scenario = ActivityScenario.launch(MainActivity::class.java)
   }
-
   @Test
   fun activitySearch_IsWorking() {
     onView(withId(R.id.searchEditText)).perform(click())
     onView(withId(R.id.searchEditText)).perform(replaceText("algol"), closeSoftKeyboard())
     onView(withId(R.id.searchEditText)).perform(pressImeActionButton())
     onView(isRoot()).perform(delay())
-    onView(withId(R.id.totalCountTextView)).check(matches(withText("Number of results: 2897")))
+    onView(withId(R.id.totalCountTextView)).check(matches(withText("Number of results: 2908")))
   }
 
   private fun delay(): ViewAction {
@@ -46,7 +44,6 @@ class MainActivityEspressoTest {
       }
     }
   }
-
   @After
   fun close() {
     scenario.close()
