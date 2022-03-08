@@ -31,6 +31,7 @@ class FakeMainActivityEspressoTest {
     Espresso.onView(withId(R.id.totalCountTextView))
       .check(ViewAssertions.matches(ViewMatchers.withText("Number of results: 42")))
   }
+
   @After
   fun close() {
     scenario.close()

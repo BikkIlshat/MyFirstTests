@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity(), ViewSearchContract {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     setUI()
-    presenter.onAttach(this)
   }
 
   private fun setUI() {
@@ -65,9 +64,9 @@ class MainActivity : AppCompatActivity(), ViewSearchContract {
     })
   }
 
-  private fun createRepository(): RepositoryContract {
-    return GitHubRepository(createRetrofit().create(GitHubApi::class.java))
-  }
+  private fun createRepository(): RepositoryContract =
+    GitHubRepository(createRetrofit().create(GitHubApi::class.java))
+
 
   private fun createRetrofit(): Retrofit {
     return Retrofit.Builder()
@@ -78,7 +77,7 @@ class MainActivity : AppCompatActivity(), ViewSearchContract {
 
   override fun displaySearchResults(
     searchResults: List<SearchResult>,
-    totalCount: Int
+    totalCount: Int,
   ) {
     with(totalCountTextView) {
       visibility = View.VISIBLE
@@ -106,12 +105,8 @@ class MainActivity : AppCompatActivity(), ViewSearchContract {
     }
   }
 
-  override fun onDestroy() {
-    presenter.onDetach()
-    super.onDestroy()
-  }
-
   companion object {
     const val BASE_URL = "https://api.github.com"
+    const val FAKE = "FAKE"
   }
 }

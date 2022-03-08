@@ -19,7 +19,6 @@ class DetailsActivity : AppCompatActivity(), ViewDetailsContract {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_details)
     setUI()
-    presenter.onAttach(this)
   }
 
   private fun setUI() {
@@ -39,11 +38,6 @@ class DetailsActivity : AppCompatActivity(), ViewDetailsContract {
       String.format(Locale.getDefault(), getString(R.string.results_count), count)
   }
 
-  override fun onDestroy() {
-    presenter.onDetach()
-    super.onDestroy()
-  }
-
   companion object {
 
     const val TOTAL_COUNT_EXTRA = "TOTAL_COUNT_EXTRA"
@@ -55,3 +49,4 @@ class DetailsActivity : AppCompatActivity(), ViewDetailsContract {
     }
   }
 }
+
