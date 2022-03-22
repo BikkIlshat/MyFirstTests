@@ -3,13 +3,14 @@ package com.geekbrains.myfirsttests.view.search
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.myfirsttests.R
 import com.geekbrains.myfirsttests.model.SearchResult
-import kotlinx.android.synthetic.main.list_item.view.*
+import com.geekbrains.myfirsttests.view.search.SearchResultAdapter.SearchResultViewHolder
 
-
-internal class SearchResultAdapter : RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder>() {
+internal class SearchResultAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
 
   private var results: List<SearchResult> = listOf()
 
@@ -41,7 +42,10 @@ internal class SearchResultAdapter : RecyclerView.Adapter<SearchResultAdapter.Se
   internal class SearchResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(searchResult: SearchResult) {
-      itemView.repositoryName.text = searchResult.fullName
+      itemView.findViewById<TextView>(R.id.repositoryName).text = searchResult.fullName
+      itemView.findViewById<TextView>(R.id.repositoryName).setOnClickListener {
+        Toast.makeText(itemView.context, searchResult.fullName, Toast.LENGTH_SHORT).show()
+      }
     }
   }
 }
