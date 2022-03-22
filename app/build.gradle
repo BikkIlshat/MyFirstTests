@@ -94,8 +94,8 @@ dependencies {
   androidTestImplementation 'androidx.test.ext:junit:1.1.2'
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
   //Mockito
-  testImplementation "org.mockito:mockito-core:2.19.0"
-  testImplementation 'org.mockito:mockito-inline:2.8.9'
+  testImplementation "org.mockito:mockito-core:4.1.0"
+  testImplementation 'org.mockito:mockito-inline:4.1.0'
   testImplementation('com.nhaarman:mockito-kotlin:1.5.0') {
     exclude group: 'org.jetbrains.kotlin'
     exclude group: 'org.mockito'
@@ -115,12 +115,5 @@ dependencies {
   debugImplementation 'androidx.fragment:fragment-testing:1.3.3'
   //RecyclerView
   debugImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
-
-  def latest_version_kaspresso="1.4.1"
-  androidTestImplementation "com.kaspersky.android-components:kaspresso:$latest_version_kaspresso"
-  // Allure support
-  androidTestImplementation "com.kaspersky.android-components:kaspresso-allure-support:$latest_version_kaspresso"
-  // Jetpack Compose support
-  androidTestImplementation "com.kaspersky.android-components:kaspresso-compose-support:$latest_version_kaspresso"
 
 }
