@@ -20,15 +20,15 @@ import retrofit2.Response
  * выступая в роли регулировщика движения на перекрестке.
  */
 
+
 internal class SearchPresenter internal constructor(
   private val viewContract: ViewSearchContract,
   private val repository: RepositoryContract,
   private val appSchedulerProvider: SchedulerProvider = SearchSchedulerProvider()
-
 ) : PresenterSearchContract, RepositoryCallback {
 
   override fun searchGitHub(searchQuery: String) {
-//Dispose
+    //Dispose
     val compositeDisposable = CompositeDisposable()
     compositeDisposable.add(
       repository.searchGithub(searchQuery)
@@ -37,6 +37,7 @@ internal class SearchPresenter internal constructor(
         .doOnSubscribe { viewContract.displayLoading(true) }
         .doOnTerminate { viewContract.displayLoading(false) }
         .subscribeWith(object : DisposableObserver<SearchResponse>() {
+
           override fun onNext(searchResponse: SearchResponse) {
             val searchResults = searchResponse.searchResults
             val totalCount = searchResponse.totalCount
@@ -49,9 +50,11 @@ internal class SearchPresenter internal constructor(
               viewContract.displayError("Search results or total count are null")
             }
           }
+
           override fun onError(e: Throwable) {
             viewContract.displayError(e.message ?: "Response is null or unsuccessful")
           }
+
           override fun onComplete() {}
         }
         )
