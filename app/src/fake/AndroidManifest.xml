@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirstTests">
         <activity
-            android:name=".FakeMainActivity"
+            android:name="com.geekbrains.myfirsttests.FakeMainActivity"
             android:exported="false" />
         <activity
             android:name=".view.search.MainActivity"

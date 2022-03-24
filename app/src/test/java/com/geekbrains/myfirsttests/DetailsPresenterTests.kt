@@ -1,5 +1,6 @@
 package com.geekbrains.myfirsttests
 
+import com.geekbrains.myfirsttest.TEST_VIEW
 import com.geekbrains.myfirsttests.presenter.details.DetailsPresenter
 import com.geekbrains.myfirsttests.view.details.ViewDetailsContract
 import com.nhaarman.mockito_kotlin.atLeastOnce
@@ -43,11 +44,11 @@ class DetailsPresenterTests {
 
   @Test
   fun attachView_PresenterTest() {
-    presenter.onAttach(viewContract)
+//        presenter.onAttach(viewContract)
     val instance = presenter.javaClass
     instance.declaredFields.forEach {
       it.isAccessible = true
-      if (it.name == "view") {
+      if (it.name == TEST_VIEW) {
         Assert.assertEquals(viewContract, it.get(presenter))
       }
     }
@@ -55,14 +56,15 @@ class DetailsPresenterTests {
 
   @Test
   fun detachView_Presenter_Test() {
-    presenter.onDetach()
+//        presenter.onDetach()
     val instance = presenter.javaClass
     instance.declaredFields.forEach {
       it.isAccessible = true
-      if (it.name == "view"){
+      if (it.name == TEST_VIEW){
         Assert.assertNull(it.get(presenter))
       }
     }
   }
+
 
 }

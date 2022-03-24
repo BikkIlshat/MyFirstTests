@@ -1,10 +1,9 @@
-package com.geekbrains.myfirsttests
+package com.geekbrains.myfirsttests.espresso
 
 import android.widget.TextView
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
@@ -14,6 +13,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.geekbrains.myfirsttest.TEST_NUMBER_OF_RESULTS_MINUS_1
 import com.geekbrains.myfirsttest.TEST_NUMBER_OF_RESULTS_PLUS_1
 import com.geekbrains.myfirsttest.TEST_NUMBER_OF_RESULTS_ZERO
+import com.geekbrains.myfirsttests.R
 import com.geekbrains.myfirsttests.view.details.DetailsActivity
 import junit.framework.TestCase
 import org.junit.After
