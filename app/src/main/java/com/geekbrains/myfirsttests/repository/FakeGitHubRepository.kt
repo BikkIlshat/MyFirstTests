@@ -3,19 +3,21 @@ package com.geekbrains.myfirsttests.repository
 import com.geekbrains.myfirsttests.model.SearchResponse
 import com.geekbrains.myfirsttests.model.SearchResult
 import com.geekbrains.myfirsttests.presenter.RepositoryContract
+import io.reactivex.Observable
 import retrofit2.Response
 import kotlin.random.Random
 
 internal class FakeGitHubRepository : RepositoryContract {
-
   override fun searchGithub(
     query: String,
     callback: RepositoryCallback
   ) {
-    callback.handleGitHubResponse(Response.success(getFakeResponse()))
+    callback.handleGitHubResponse(Response.success(generateSearchResponse()))
   }
-
-  private fun getFakeResponse(): SearchResponse {
+  override fun searchGithub(query: String): Observable<SearchResponse> {
+    return Observable.just(generateSearchResponse())
+  }
+  private fun generateSearchResponse(): SearchResponse {
     val list: MutableList<SearchResult> = mutableListOf()
     for (index in 1..100) {
       list.add(
