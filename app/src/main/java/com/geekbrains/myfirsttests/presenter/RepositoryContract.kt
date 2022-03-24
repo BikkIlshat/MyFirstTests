@@ -1,10 +1,21 @@
 package com.geekbrains.myfirsttests.presenter
 
+import com.geekbrains.myfirsttests.model.SearchResponse
 import com.geekbrains.myfirsttests.repository.RepositoryCallback
+import io.reactivex.Observable
 
-internal interface RepositoryContract {
+interface RepositoryContract {
   fun searchGithub(
     query: String,
     callback: RepositoryCallback
   )
+
+  fun searchGithub(
+    query: String
+  ): Observable<SearchResponse>
+
+  suspend fun searchGithubAsync(
+    query: String
+  ): SearchResponse
+
 }
