@@ -4,7 +4,7 @@ import com.geekbrains.myfirsttests.model.SearchResponse
 import com.geekbrains.myfirsttests.repository.RepositoryCallback
 import io.reactivex.Observable
 
-internal interface RepositoryContract {
+interface RepositoryContract {
   fun searchGithub(
     query: String,
     callback: RepositoryCallback
