@@ -10,13 +10,19 @@ import kotlin.random.Random
 internal class FakeGitHubRepository : RepositoryContract {
   override fun searchGithub(
     query: String,
-    callback: RepositoryCallback
+    callback: RepositoryCallback,
   ) {
     callback.handleGitHubResponse(Response.success(generateSearchResponse()))
   }
+
   override fun searchGithub(query: String): Observable<SearchResponse> {
     return Observable.just(generateSearchResponse())
   }
+
+  override suspend fun searchGithubAsync(query: String): SearchResponse
+  = generateSearchResponse()
+
+
   private fun generateSearchResponse(): SearchResponse {
     val list: MutableList<SearchResult> = mutableListOf()
     for (index in 1..100) {
